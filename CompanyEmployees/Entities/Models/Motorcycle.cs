@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,9 @@ namespace Entities.Models
 
         [Required(ErrorMessage = "Motorcycle IdAgency is required field")]        
         public int IdAgency { get; set; }
+
+        [InverseProperty("motocicleta")]
+        public ICollection<Rent> Rents_Motorcycle { get; set; }
 
     }
 }

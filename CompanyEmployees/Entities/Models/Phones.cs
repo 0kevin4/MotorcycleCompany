@@ -10,6 +10,9 @@ namespace Entities.Models
     public class Phones
     {
         [Key]
+        public int Id { get; set; }
+        
+        [Key]
         public int IdAgency { get; set; }
 
         [Key]

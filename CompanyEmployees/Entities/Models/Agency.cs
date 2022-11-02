@@ -26,5 +26,8 @@ namespace Entities.Models
         [MaxLength(60, ErrorMessage = "Maximun lenght for the poblation is 60 characters")]
         public  string Poblation { get; set; }
 
+        [InverseProperty("Agencia")]
+        public ICollection<Rent> Rents_Agency { get; set; }
+
     }
 }

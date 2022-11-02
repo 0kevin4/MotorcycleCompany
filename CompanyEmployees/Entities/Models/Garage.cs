@@ -11,6 +11,9 @@ namespace Entities.Models
     {
 
         [Key]
+        public int Id { get; set; }
+
+        [Key]
         public int IdCity { get; set; }
 
         [Key]

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
 
@@ -11,9 +12,10 @@ using Repository;
 namespace CompanyEmployees.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20221102181243_Models")]
+    partial class Models
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,8 +242,7 @@ namespace CompanyEmployees.Migrations
 
                     b.Property<string>("DNIClient")
                         .IsRequired()
-                        .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("IdAgency")
                         .HasColumnType("int");
@@ -267,55 +268,7 @@ namespace CompanyEmployees.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DNIClient");
-
-                    b.HasIndex("IdAgency");
-
-                    b.HasIndex("IdMotorcycle");
-
                     b.ToTable("Renta");
-                });
-
-            modelBuilder.Entity("Entities.Models.Rent", b =>
-                {
-                    b.HasOne("Entities.Models.Client", "Cliente")
-                        .WithMany("Rents_Client")
-                        .HasForeignKey("DNIClient")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Models.Agency", "Agencia")
-                        .WithMany("Rents_Agency")
-                        .HasForeignKey("IdAgency")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Models.Motorcycle", "motocicleta")
-                        .WithMany("Rents_Motorcycle")
-                        .HasForeignKey("IdMotorcycle")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Agencia");
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("motocicleta");
-                });
-
-            modelBuilder.Entity("Entities.Models.Agency", b =>
-                {
-                    b.Navigation("Rents_Agency");
-                });
-
-            modelBuilder.Entity("Entities.Models.Client", b =>
-                {
-                    b.Navigation("Rents_Client");
-                });
-
-            modelBuilder.Entity("Entities.Models.Motorcycle", b =>
-                {
-                    b.Navigation("Rents_Motorcycle");
                 });
 #pragma warning restore 612, 618
         }
