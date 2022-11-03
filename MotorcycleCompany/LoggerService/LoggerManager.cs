@@ -5,33 +5,19 @@ namespace LoggerService
 {
     public class LoggerManager : IloggerManager
     {
-        private static ILogger _logger = LogManager.GetCurrentClassLogger();
+        private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
 
-
-        public LoggerManager
+        public LoggerManager()
         {
 
         }
 
+        public void LogInfo(string message) => Logger.Info(message);
+        public void LogWarn(string message) => Logger.Warn(message);
+        public void LogDebug(string message) => Logger.Debug(message);
+        public void LogError(string message) => Logger.Error(message);
 
-        public void LogDebug(string message)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void LogError(string message)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void logInfo(string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Logwarn(string message)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

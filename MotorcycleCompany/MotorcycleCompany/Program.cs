@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureCors();
 builder.Services.configureIISIntegratio();
+builder.Services.ConfigureRepositoryManager();
 
 builder.Services.AddControllers();
 
@@ -35,12 +36,12 @@ app.UseAuthorization();
 //{
 //    await context.Response.WriteAsync("Hola desde el middleware personalizado");
 
-app.Use(async (context, next) =>
-{
-    Console.WriteLine($"Hola desde el middleware personalizado");
-    await next.Invoke();
-    Console.WriteLine($"Hola desde el middleware personalizado");
-});
+//app.Use(async (context, next) =>
+//{
+//    Console.WriteLine($"Hola desde el middleware personalizado");
+//    await next.Invoke();
+//    Console.WriteLine($"Hola desde el middleware personalizado");
+//});
 
 app.MapControllers();
 

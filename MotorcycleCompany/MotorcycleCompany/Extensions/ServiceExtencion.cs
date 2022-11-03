@@ -1,4 +1,7 @@
-﻿namespace MotorcycleCompany.Extensions
+﻿using Contracts;
+using Repository;
+
+namespace MotorcycleCompany.Extensions
 {
     public static class ServiceExtencion
     {
@@ -17,6 +20,8 @@
             {
 
             });
+        public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+        services.AddScoped<IRepositoryManager, RepositoryManager>();
 
     }
 }
