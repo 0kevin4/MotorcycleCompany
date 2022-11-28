@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Entities.Models;
 using Service.Contract;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,27 @@ namespace Service
 {
     internal sealed class CityService : ICityService
     {
-        private readonly IRepositoryManager repository;
-        private readonly IloggerManager loggerManager;
+        private readonly IRepositoryManager _repository;
+        private readonly ILoggerManager _loggerManager;
 
-        public CityService(IRepositoryManager repository, IloggerManager loggerManager)
+        public CityService(IRepositoryManager repository, ILoggerManager loggerManager)
         {
-            this.repository = repository;
-            this.loggerManager = loggerManager;
+            this._repository = repository;
+            this._loggerManager = loggerManager;
+        }
+
+        public IEnumerable<City> GetAllAgencias(bool trackChanges)
+        {
+            try
+            {
+                var cities = _repository.City.GetAllCities(trackChanges);
+                return cities;
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong in the {nameof(GetAllAgencias)} service method {ex}");
+                throw;
+            }
         }
     }
 }

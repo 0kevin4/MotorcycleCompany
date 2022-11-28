@@ -167,11 +167,10 @@ namespace MotorcycleCompany.Migrations
 
             modelBuilder.Entity("Entities.Models.Garage", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("IdCity")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCity")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -186,25 +185,23 @@ namespace MotorcycleCompany.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdCity");
+                    b.HasKey("IdCity");
 
                     b.ToTable("Garaje");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
                             IdCity = 1,
+                            Id = 1,
                             Name = "Kevin",
                             Num = 123,
                             Street = "cr 82 #42 f 56 sur"
                         },
                         new
                         {
-                            Id = 2,
                             IdCity = 2,
+                            Id = 2,
                             Name = "Jose",
                             Num = 456,
                             Street = "cr 82 #42 f 56 sur"
@@ -268,7 +265,7 @@ namespace MotorcycleCompany.Migrations
                             Id = 1,
                             Brand = "Ferrari",
                             Color = "Blue",
-                            Date = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             IdAgency = 1,
                             IdGarage = 1,
                             Num = 123,
@@ -281,7 +278,7 @@ namespace MotorcycleCompany.Migrations
                             Id = 2,
                             Brand = "Supra",
                             Color = "Red",
-                            Date = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local),
                             IdAgency = 2,
                             IdGarage = 2,
                             Num = 345,
@@ -377,9 +374,9 @@ namespace MotorcycleCompany.Migrations
                             IdMotorcycle = 1,
                             Paidout = "Yes",
                             Price = 1000,
-                            dateF = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateI = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateR = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local)
+                            dateF = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateI = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateR = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
@@ -389,9 +386,9 @@ namespace MotorcycleCompany.Migrations
                             IdMotorcycle = 2,
                             Paidout = "No",
                             Price = 2000,
-                            dateF = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateI = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateR = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local)
+                            dateF = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateI = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateR = new DateTime(2022, 11, 28, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 

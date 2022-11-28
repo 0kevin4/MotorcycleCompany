@@ -15,5 +15,10 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<City> GetAllCities(bool trackChanges) =>
+            FindAll(trackChanges)
+            .OrderBy(a => a.Name)
+            .ToList();
     }
 }

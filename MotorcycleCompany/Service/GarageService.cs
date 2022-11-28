@@ -11,9 +11,9 @@ namespace Service
     internal sealed class GarageService : IGarageService
     {
         private readonly IRepositoryManager repository;
-        private readonly IloggerManager loggerManager;
+        private readonly ILoggerManager loggerManager;
 
-        public GarageService(IRepositoryManager repository, IloggerManager loggerManager)
+        public GarageService(IRepositoryManager repository, ILoggerManager loggerManager)
         {
             this.repository = repository;
             this.loggerManager = loggerManager;

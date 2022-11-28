@@ -15,5 +15,10 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Client> GetAllClients(bool trackChanges)=>
+            FindAll(trackChanges)
+            .OrderBy(a => a.Name)
+            .ToList();
     }
 }

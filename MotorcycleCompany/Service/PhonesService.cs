@@ -11,9 +11,9 @@ namespace Service
     internal sealed class PhonesService : IPhonesServices
     {
         private readonly IRepositoryManager repository;
-        private readonly IloggerManager loggerManager;
+        private readonly ILoggerManager loggerManager;
 
-        public PhonesService(IRepositoryManager repository, IloggerManager loggerManager)
+        public PhonesService(IRepositoryManager repository, ILoggerManager loggerManager)
         {
             this.repository = repository;
             this.loggerManager = loggerManager;

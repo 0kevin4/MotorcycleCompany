@@ -11,9 +11,9 @@ namespace Service
     internal sealed class MotorcycleService : IMotorcycleService
     {
         private readonly IRepositoryManager repository;
-        private readonly IloggerManager loggerManager;
+        private readonly ILoggerManager loggerManager;
 
-        public MotorcycleService(IRepositoryManager repository, IloggerManager loggerManager)
+        public MotorcycleService(IRepositoryManager repository, ILoggerManager loggerManager)
         {
             this.repository = repository;
             this.loggerManager = loggerManager;

@@ -1,6 +1,6 @@
 ﻿namespace Contracts
 {
-    public interface IloggerManager
+    public interface ILoggerManager
     {
         void LogInfo(string message);
         void LogWarn(string message);

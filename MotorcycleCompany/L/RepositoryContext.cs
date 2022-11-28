@@ -31,7 +31,7 @@ namespace Repository
            .HasKey("Id");
 
             modelBuilder.Entity<Phones>()
-          .HasKey("Id");
+           .HasKey("Id");
         }
 
         public DbSet<Agency> Agencias { get; set; }

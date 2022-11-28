@@ -11,9 +11,9 @@ namespace Service
     internal sealed class RentService : IRentService
     {
         private readonly IRepositoryManager repository;
-        private readonly IloggerManager loggerManager;
+        private readonly ILoggerManager loggerManager;
 
-        public RentService(IRepositoryManager repository, IloggerManager loggerManager)
+        public RentService(IRepositoryManager repository, ILoggerManager loggerManager)
         {
             this.repository = repository;
             this.loggerManager = loggerManager;

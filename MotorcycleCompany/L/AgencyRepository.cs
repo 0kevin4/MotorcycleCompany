@@ -15,5 +15,11 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Agency> GetAllAgencias(bool trackChanges) =>
+            FindAll(trackChanges)
+            .OrderBy(a => a.Name)
+            .ToList();
+       
     }
 }

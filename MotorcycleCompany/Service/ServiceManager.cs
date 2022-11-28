@@ -20,7 +20,7 @@ namespace Service
         private readonly Lazy<IRentService> _rentService;
 
 
-        public ServiceManager(IRepositoryManager repositoryManager,IloggerManager loggerManager)
+        public ServiceManager(IRepositoryManager repositoryManager,ILoggerManager loggerManager)
         {
             _agencyService = new Lazy<IAgencyService>(() => new AgencyService(repositoryManager, loggerManager));
             _cityService = new Lazy<ICityService>(() => new CityService(repositoryManager, loggerManager));
