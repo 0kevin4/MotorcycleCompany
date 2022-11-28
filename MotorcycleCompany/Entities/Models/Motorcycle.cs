@@ -39,6 +39,7 @@ namespace Entities.Models
         [Required(ErrorMessage = "Motorcycle Num is required field")]
         public int Num { get; set; }
 
+
         [Required(ErrorMessage = "Motorcycle Date is required field")]
         public DateTime Date { get; set; }
 

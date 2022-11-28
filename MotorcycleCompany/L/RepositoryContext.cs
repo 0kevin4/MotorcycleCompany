@@ -20,6 +20,12 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AgencyConfiguration());
+            modelBuilder.ApplyConfiguration(new CityConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
+            modelBuilder.ApplyConfiguration(new GarageConfiguration());
+            modelBuilder.ApplyConfiguration(new MotorcycleConfiguration());
+            modelBuilder.ApplyConfiguration(new PhonesConfiguration());
+            modelBuilder.ApplyConfiguration(new RentConfiguration());
 
             modelBuilder.Entity<Garage>()
            .HasKey("Id");

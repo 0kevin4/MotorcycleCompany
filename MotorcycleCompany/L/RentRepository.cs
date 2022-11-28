@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class AgencyRepository : RepositoryBase<Agency>, IAgency
+    internal class RentRepository: RepositoryBase<Rent>, IRent
     {
-        public AgencyRepository(RepositoryContext context)
-        : base(context)
+        public RentRepository(RepositoryContext context)
+      : base(context)
         {
 
         }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class AgencyRepository : RepositoryBase<Agency>, IAgency
+    public class CityRepository : RepositoryBase<City> , ICity
     {
-        public AgencyRepository(RepositoryContext context)
+        public CityRepository(RepositoryContext context)
         : base(context)
         {
 

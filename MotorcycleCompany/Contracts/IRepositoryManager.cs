@@ -9,7 +9,12 @@ namespace Contracts
     public interface IRepositoryManager
     {
         IAgency Agency { get; }
-        //IClient Client { get; }
+        ICity City { get; }
+        IClient Client { get; }
+        IGarage Garage { get; }
+        IMotorcycle Motorcycle { get; }
+        IPhones Phones { get; }
+        IRent Rent { get; }
 
         void Save();
     }

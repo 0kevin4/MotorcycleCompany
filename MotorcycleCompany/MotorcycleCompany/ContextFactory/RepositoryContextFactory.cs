@@ -14,7 +14,8 @@ namespace MotorcycleCompany.ContextFactory
             .Build();
 
             var builder = new DbContextOptionsBuilder<RepositoryContext>()
-                .UseSqlServer(configuration.GetConnectionString("sqlConnection"),
+                .UseMySql(configuration.GetConnectionString("sqlConnection"),
+            new MySqlServerVersion(new Version(8, 0, 30)),
                 b => b.MigrationsAssembly("MotorcycleCompany"));
 
             return new RepositoryContext(builder.Options);

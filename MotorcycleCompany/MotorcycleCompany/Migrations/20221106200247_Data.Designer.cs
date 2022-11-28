@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repository;
@@ -12,17 +11,15 @@ using Repository;
 namespace MotorcycleCompany.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20221103192705_Foreing-Key")]
-    partial class ForeingKey
+    [Migration("20221106200247_Data")]
+    partial class Data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.10")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Entities.Models.Agency", b =>
                 {
@@ -31,22 +28,20 @@ namespace MotorcycleCompany.Migrations
                         .HasColumnType("int")
                         .HasColumnName("AgencyId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("Direction")
                         .IsRequired()
                         .HasMaxLength(120)
-                        .HasColumnType("nvarchar(120)");
+                        .HasColumnType("varchar(120)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(60)");
 
                     b.Property<string>("Poblation")
                         .IsRequired()
                         .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
+                        .HasColumnType("varchar(60)");
 
                     b.HasKey("Id");
 
@@ -75,12 +70,10 @@ namespace MotorcycleCompany.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<int>("Population")
                         .HasColumnType("int");
@@ -88,50 +81,90 @@ namespace MotorcycleCompany.Migrations
                     b.Property<string>("Province")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Ciudad");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Kevin",
+                            Population = 1000,
+                            Province = "Kennedy"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Jose",
+                            Population = 10000,
+                            Province = "Guateque"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Client", b =>
                 {
                     b.Property<string>("DNI")
                         .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
+                        .HasColumnType("varchar(9)");
 
                     b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Direction")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
-                    b.Property<int>("Phone")
-                        .HasColumnType("int");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
-                    b.Property<string>("SecondName")
+                    b.Property<string>("SecondSurname")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("DNI");
 
                     b.ToTable("Cliente");
+
+                    b.HasData(
+                        new
+                        {
+                            DNI = "1049794204",
+                            City = "Bogota",
+                            Direction = "cr 82 #42 f 56 sur",
+                            Name = "Kevin",
+                            Phone = "3219250893",
+                            SecondSurname = "Ramirez",
+                            Surname = "Moreno"
+                        },
+                        new
+                        {
+                            DNI = "23622563",
+                            City = "Guateque",
+                            Direction = "calle 13 #4-37",
+                            Name = "Luz",
+                            Phone = "3145463634",
+                            SecondSurname = "Sayns",
+                            Surname = "Banish"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Garage", b =>
@@ -140,28 +173,44 @@ namespace MotorcycleCompany.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<int>("IdCity")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<int>("Num")
                         .HasColumnType("int");
 
                     b.Property<string>("Street")
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdCity");
 
                     b.ToTable("Garaje");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IdCity = 1,
+                            Name = "Kevin",
+                            Num = 123,
+                            Street = "cr 82 #42 f 56 sur"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IdCity = 2,
+                            Name = "Jose",
+                            Num = 456,
+                            Street = "cr 82 #42 f 56 sur"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Motorcycle", b =>
@@ -170,20 +219,18 @@ namespace MotorcycleCompany.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("IdAgency")
                         .HasColumnType("int");
@@ -197,17 +244,17 @@ namespace MotorcycleCompany.Migrations
                     b.Property<string>("NumBast")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.Property<string>("model")
                         .IsRequired()
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("Id");
 
@@ -216,6 +263,34 @@ namespace MotorcycleCompany.Migrations
                     b.HasIndex("IdGarage");
 
                     b.ToTable("Motocicleta");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Brand = "Ferrari",
+                            Color = "Blue",
+                            Date = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            IdAgency = 1,
+                            IdGarage = 1,
+                            Num = 123,
+                            NumBast = "White",
+                            Street = "Griislong",
+                            model = "C-666"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Brand = "Supra",
+                            Color = "Red",
+                            Date = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            IdAgency = 2,
+                            IdGarage = 2,
+                            Num = 345,
+                            NumBast = "Dark",
+                            Street = "Smile",
+                            model = "Z-333"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Phones", b =>
@@ -224,19 +299,32 @@ namespace MotorcycleCompany.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<int>("IdAgency")
                         .HasColumnType("int");
 
-                    b.Property<int>("phone")
-                        .HasColumnType("int");
+                    b.Property<string>("phone")
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdAgency");
 
                     b.ToTable("Celular");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IdAgency = 1,
+                            phone = "3219250893"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IdAgency = 2,
+                            phone = "3514567895"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Rent", b =>
@@ -245,12 +333,10 @@ namespace MotorcycleCompany.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("DNIClient")
                         .IsRequired()
                         .HasMaxLength(9)
-                        .HasColumnType("nvarchar(9)");
+                        .HasColumnType("varchar(9)");
 
                     b.Property<int>("IdAgency")
                         .HasColumnType("int");
@@ -258,21 +344,21 @@ namespace MotorcycleCompany.Migrations
                     b.Property<int>("IdMotorcycle")
                         .HasColumnType("int");
 
+                    b.Property<string>("Paidout")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("dateF")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("dateI")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("dateR")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("paidout")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
@@ -283,6 +369,32 @@ namespace MotorcycleCompany.Migrations
                     b.HasIndex("IdMotorcycle");
 
                     b.ToTable("Renta");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DNIClient = "1049794204",
+                            IdAgency = 1,
+                            IdMotorcycle = 1,
+                            Paidout = "Yes",
+                            Price = 1000,
+                            dateF = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateI = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateR = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DNIClient = "23622563",
+                            IdAgency = 2,
+                            IdMotorcycle = 2,
+                            Paidout = "No",
+                            Price = 2000,
+                            dateF = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateI = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateR = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local)
+                        });
                 });
 
             modelBuilder.Entity("Entities.Models.Garage", b =>

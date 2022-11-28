@@ -17,7 +17,8 @@ namespace Entities.Models
         public int IdAgency { get; set; }
 
         [Key]
-        public int phone { get; set; }
+        [MaxLength(30)]
+        public string phone { get; set; }
 
         [ForeignKey("IdAgency")]
         [InverseProperty("Phones_Agency")]

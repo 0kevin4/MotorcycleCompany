@@ -29,7 +29,7 @@ namespace Entities.Models
 
         public int Price { get; set; }
 
-        public string paidout { get; set; }
+        public string Paidout { get; set; }
 
 
        

@@ -20,11 +20,11 @@ namespace Entities.Models
 
         [Required(ErrorMessage = "Client FirstName is required field")]
         [MaxLength(30, ErrorMessage = "Maximun lenght for the PrimerApellido is 60 characters")]
-        public string FirstName { get; set; }
+        public string Surname { get; set; }
 
         [Required(ErrorMessage = "Client SecondName is required field")]
         [MaxLength(30, ErrorMessage = "Maximun lenght for the SegundoApellido is 60 characters")]
-        public string SecondName { get; set; }
+        public string SecondSurname { get; set; }
 
         [Required(ErrorMessage = "Client Direction is required field")]
         [MaxLength(30, ErrorMessage = "Maximun lenght for the Direccion is 60 characters")]
@@ -34,8 +34,9 @@ namespace Entities.Models
         [MaxLength(30, ErrorMessage = "Maximun lenght for the Ciudad is 60 characters")]
         public string City { get; set; }
 
+        [MaxLength(20)]
         [Required(ErrorMessage = "Client Phone is required field")]
-        public int Phone { get; set; }
+        public string Phone { get; set; }
 
 
         [InverseProperty("Cliente")]
