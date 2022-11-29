@@ -19,7 +19,7 @@ namespace Repository
         }
 
         public IEnumerable<Agency> GetAllAgencias(bool trackChanges) =>
-            FindAll(trackChanges).Include("Motorcycle_Agency")
+            FindAll(trackChanges)
             .OrderBy(a => a.Name)
             .ToList();
        

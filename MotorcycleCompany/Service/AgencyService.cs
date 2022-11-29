@@ -1,4 +1,5 @@
-﻿using Contracts;
+﻿using AutoMapper;
+using Contracts;
 using Entities.Models;
 using Service.Contract;
 using Shared.DataTransferObject;
@@ -14,11 +15,13 @@ namespace Service
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _loggerManager;
+        private readonly IMapper _mapper;
 
-        public AgencyService(IRepositoryManager repository, ILoggerManager loggerManager)
+        public AgencyService(IRepositoryManager repository, ILoggerManager loggerManager, IMapper mapper)
         {
             this._repository = repository;
             this._loggerManager = loggerManager;
+            this._mapper = mapper;
         }
 
         public IEnumerable<AgencyDto> GetAllAgencias(bool trackChanges)
@@ -34,7 +37,7 @@ namespace Service
             }
             catch (Exception ex)
             {
-                _loggerManager.LogError($"Something went wrong in the {nameof(GetAllAgencias)} service method {ex}");
+                _loggerManager.LogError($"Something went wrong in the {nameof(GetAllAgencias)} "+ $"service method {ex}");
                 throw;
             }
         }
