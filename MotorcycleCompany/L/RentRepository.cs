@@ -15,5 +15,10 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Rent> GetAllRents(bool trackChanges)=>
+            FindAll(trackChanges)
+            .OrderBy(a => a.Id)
+            .ToList();
     }
 }

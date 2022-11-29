@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
@@ -17,7 +19,7 @@ namespace Repository
         }
 
         public IEnumerable<Agency> GetAllAgencias(bool trackChanges) =>
-            FindAll(trackChanges)
+            FindAll(trackChanges).Include("Motorcycle_Agency")
             .OrderBy(a => a.Name)
             .ToList();
        

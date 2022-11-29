@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Service.Contract;
+using Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,16 @@ namespace Service
             this._loggerManager = loggerManager;
         }
 
-        public IEnumerable<Agency> GetAllAgencias(bool trackChanges)
+        public IEnumerable<AgencyDto> GetAllAgencias(bool trackChanges)
         {
             try
             {
                 var agencias = _repository.Agency.GetAllAgencias(trackChanges);
-                return agencias;
+                
+                var agenciasDto = agencias.Select(a=>new AgencyDto(a.Name,a.Direction,a.Poblation ?? ""))
+                    .ToList();
+                return agenciasDto;
+
             }
             catch (Exception ex)
             {

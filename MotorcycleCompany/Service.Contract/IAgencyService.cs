@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Service.Contract
 {
     public interface IAgencyService
     {
-        IEnumerable<Agency> GetAllAgencias(bool trackChanges);
+        //IEnumerable<Agency> GetAllAgencias(bool trackChanges);
+
+        IEnumerable<AgencyDto> GetAllAgencias(bool trackChanges);
     }
 }

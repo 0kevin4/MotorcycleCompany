@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using MotorcycleCompany.Extensions;
 using NLog;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,10 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.Configuremysqlcontext(builder.Configuration);
-builder.Services.AddControllers().AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler    = ReferenceHandler.IgnoreCycles);
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 builder.Services.AddEndpointsApiExplorer();

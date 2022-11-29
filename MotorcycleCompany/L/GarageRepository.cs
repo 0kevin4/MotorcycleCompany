@@ -15,5 +15,10 @@ namespace Repository
         {
 
         }
+
+        public IEnumerable<Garage> GetAllGarages(bool trackChanges)=>
+            FindAll(trackChanges)
+            .OrderBy(a => a.Name)
+            .ToList();
     }
 }
