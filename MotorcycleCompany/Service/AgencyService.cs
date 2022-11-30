@@ -26,20 +26,15 @@ namespace Service
 
         public IEnumerable<AgencyDto> GetAllAgencias(bool trackChanges)
         {
-            try
-            {
-                var agencias = _repository.Agency.GetAllAgencias(trackChanges);
-                
-                var agenciasDto = agencias.Select(a=>new AgencyDto(a.Name,a.Direction,a.Poblation ?? ""))
-                    .ToList();
-                return agenciasDto;
+            var agencias = _repository.Agency.GetAllAgencias(trackChanges);
 
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"Something went wrong in the {nameof(GetAllAgencias)} "+ $"service method {ex}");
-                throw;
-            }
+            //var agenciasDto = agencias.Select(a=>new AgencyDto(a.Name,a.Direction,a.Poblation ?? ""))
+            //    .ToList();
+
+            var agenciasDto = _mapper.Map<IEnumerable<AgencyDto>>(agencias);
+            return agenciasDto;
+
+            
         }
     }
 }

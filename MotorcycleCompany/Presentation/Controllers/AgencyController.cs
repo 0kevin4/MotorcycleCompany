@@ -22,15 +22,9 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult GetAgencias()
         {
-            try
-            {
-                var agencias = _service.AgencyService.GetAllAgencias(trackChanges: false);
-                return Ok(agencias);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal Server Error");
-            }
+            var agencias = _service.AgencyService.GetAllAgencias(trackChanges: false);
+            return Ok(agencias);
+            
         }
     }
 }

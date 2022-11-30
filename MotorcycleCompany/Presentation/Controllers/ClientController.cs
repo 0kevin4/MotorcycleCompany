@@ -20,15 +20,8 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult GetAgencias()
         {
-            try
-            {
-                var Clients = _service.ClientService.GetAllClients(trackChanges: false);
-                return Ok(Clients);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal Server Error");
-            }
+            var Clients = _service.ClientService.GetAllClients(trackChanges: false);
+            return Ok(Clients);
         }
     }
 }

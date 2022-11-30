@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Shared.DataTransferObject
 {
-   
-   public record AgencyDto(string Name, string Direction, string poblation);
-   
+    public record GarageDto(string Name, int Num, string Street);
 }

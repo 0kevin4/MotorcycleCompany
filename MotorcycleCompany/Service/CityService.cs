@@ -2,6 +2,7 @@
 using Contracts;
 using Entities.Models;
 using Service.Contract;
+using Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,13 @@ namespace Service
             this._mapper = mapper;
         }
 
-        public IEnumerable<City> GetAllAgencias(bool trackChanges)
+        public IEnumerable<CityDto> GetAllAgencias(bool trackChanges)
         {
-            try
-            {
-                var cities = _repository.City.GetAllCities(trackChanges);
-                return cities;
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"Something went wrong in the {nameof(GetAllAgencias)} service method {ex}");
-                throw;
-            }
+
+            var cities = _repository.City.GetAllCities(trackChanges);
+
+            var citiesDto = _mapper.Map<IEnumerable<CityDto>>(cities);
+            return citiesDto;
         }
     }
 }

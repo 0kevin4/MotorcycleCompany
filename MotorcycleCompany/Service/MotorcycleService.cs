@@ -2,6 +2,7 @@
 using Contracts;
 using Entities.Models;
 using Service.Contract;
+using Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,13 @@ namespace Service
             this._mapper = mapper;
         }
 
-        public IEnumerable<Motorcycle> GetAllMotorcycles(bool trackChanges)
+        public IEnumerable<MotorcycleDto> GetAllMotorcycles(bool trackChanges)
         {
-            try
-            {
-                var Motorcycles = _repository.Motorcycle.GetAllMotorcycles(trackChanges);
-                return Motorcycles;
-            }
-            catch (Exception ex)
-            {
-                _loggerManager.LogError($"Something went wrong in the {nameof(GetAllMotorcycles)} service method {ex}");
-                throw;
-            }
+
+            var Motorcycles = _repository.Motorcycle.GetAllMotorcycles(trackChanges);
+
+            var MotorcyclesDto = _mapper.Map<IEnumerable<MotorcycleDto>>(Motorcycles);
+            return MotorcyclesDto;
         }
     }
 }

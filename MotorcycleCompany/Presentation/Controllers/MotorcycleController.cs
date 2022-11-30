@@ -20,15 +20,9 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult GetMotorcycles()
         {
-            try
-            {
-                var motorcycles = _service.MotorcycleService.GetAllMotorcycles(trackChanges: false);
-                return Ok(motorcycles);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal Server Error");
-            }
+            var motorcycles = _service.MotorcycleService.GetAllMotorcycles(trackChanges: false);
+            return Ok(motorcycles);
+
         }
     }
 }

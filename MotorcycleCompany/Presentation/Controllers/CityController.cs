@@ -20,15 +20,9 @@ namespace Presentation.Controllers
         [HttpGet]
         public IActionResult GetAgencias()
         {
-            try
-            {
-                var Cities = _service.CityService.GetAllAgencias(trackChanges: false);
-                return Ok(Cities);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500, "Internal Server Error");
-            }
+            var Cities = _service.CityService.GetAllAgencias(trackChanges: false);
+            return Ok(Cities);
+
         }
     }
 }

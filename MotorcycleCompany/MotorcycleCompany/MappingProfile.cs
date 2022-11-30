@@ -9,7 +9,13 @@ namespace MotorcycleCompany
         public MappingProfile ()
         {
             CreateMap<Agency, AgencyDto>();
-                //.ForCtorParam("FullDirection", opt => opt.MapFrom(x => string.Join(' ', x.Direction, x.Name)));
+            CreateMap<City, CityDto>();
+            CreateMap<Client, ClientDto>();
+            CreateMap<Garage, GarageDto>();
+            CreateMap<Motorcycle, MotorcycleDto>();
+            CreateMap<Phones, PhonesDto>();
+            CreateMap<Rent, RentDto>();
+
         }
     }
 }

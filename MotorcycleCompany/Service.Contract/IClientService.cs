@@ -1,4 +1,6 @@
 ﻿using Entities.Models;
+using Shared;
+using Shared.DataTransferObject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,6 @@ namespace Service.Contract
 {
     public interface IClientService
     {
-        IEnumerable<Client> GetAllClients(bool trackChanges);
+        IEnumerable<ClientDto> GetAllClients(bool trackChanges);
     }
 }
