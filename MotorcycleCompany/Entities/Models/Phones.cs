@@ -21,7 +21,7 @@ namespace Entities.Models
         public string phone { get; set; }
 
         [ForeignKey("IdAgency")]
-        [InverseProperty("Phones_Agency")]
-        public Agency Agencia { get; set; }
+        [InverseProperty("Phone")]
+        public Agency Agency { get; set; }
     }
 }

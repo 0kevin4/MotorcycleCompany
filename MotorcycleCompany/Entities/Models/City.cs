@@ -26,8 +26,8 @@ namespace Entities.Models
 
 
 
-        [InverseProperty("Garaje")]
-        public ICollection<Garage> Garage_City { get; set; }
+        [InverseProperty("City")]
+        public ICollection<Garage> Garage { get; set; }
 
     }
 }

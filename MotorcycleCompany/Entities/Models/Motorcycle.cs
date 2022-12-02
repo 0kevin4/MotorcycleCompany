@@ -49,18 +49,18 @@ namespace Entities.Models
 
 
         [ForeignKey("IdAgency")]
-        [InverseProperty("Motorcycle_Agency")]
-        public Agency Agencia { get; set; }
+        [InverseProperty("Motorcycle")]
+        public Agency Agency { get; set; }
 
         [ForeignKey("IdGarage")]
-        [InverseProperty("Motorcycle_Garage")]
-        public Garage Garaje { get; set; }
+        [InverseProperty("Motorcycle")]
+        public Garage Garage { get; set; }
 
 
 
 
-        [InverseProperty("motocicleta")]
-        public ICollection<Rent> Rents_Motorcycle { get; set; }
+        [InverseProperty("Motorcycle")]
+        public ICollection<Rent> Rent { get; set; }
 
 
     }

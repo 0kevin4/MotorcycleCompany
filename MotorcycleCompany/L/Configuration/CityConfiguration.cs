@@ -17,15 +17,15 @@ namespace Repository.Configuration
                 new City
                 {
                     Id = 1,
-                    Name = "Kevin",
-                    Province = "Kennedy",
+                    Name = "Guateque",
+                    Province = "Boyaca",
                     Population = 1000
                 },
                 new City
                 {
                     Id = 2,
-                    Name = "Jose",
-                    Province = "Guateque",
+                    Name = "Bogota",
+                    Province = "Bogota.Dc",
                     Population = 10000
                 }
 

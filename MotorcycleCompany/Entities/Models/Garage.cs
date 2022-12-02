@@ -30,13 +30,13 @@ namespace Entities.Models
 
 
 
-        [InverseProperty("Garaje")]
-        public ICollection<Motorcycle> Motorcycle_Garage { get; set; }
+        [InverseProperty("Garage")]
+        public ICollection<Motorcycle> Motorcycle { get; set; }
 
 
         [ForeignKey("IdCity")]
-        [InverseProperty("Garage_City")]
-        public City Garaje { get; set; }
+        [InverseProperty("Garage")]
+        public City City { get; set; }
 
 
     }

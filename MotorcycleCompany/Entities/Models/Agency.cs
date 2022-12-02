@@ -29,16 +29,16 @@ namespace Entities.Models
 
 
 
-        [InverseProperty("Agencia")]
-        public ICollection<Rent> Rents_Agency { get; set; } 
+        [InverseProperty("Agency")]
+        public ICollection<Rent> Rent { get; set; } 
         
         
-        [InverseProperty("Agencia")]
-        public ICollection<Motorcycle> Motorcycle_Agency { get; set; }
+        [InverseProperty("Agency")]
+        public ICollection<Motorcycle> Motorcycle { get; set; }
 
 
-        [InverseProperty("Agencia")]
-        public ICollection<Phones> Phones_Agency { get; set; }
+        [InverseProperty("Agency")]
+        public ICollection<Phones> Phone { get; set; }
 
 
     }

@@ -11,8 +11,8 @@ using Repository;
 namespace MotorcycleCompany.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20221106200247_Data")]
-    partial class Data
+    [Migration("20221202012000_MotorcycleCompany-Get")]
+    partial class MotorcycleCompanyGet
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,16 +91,16 @@ namespace MotorcycleCompany.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Kevin",
+                            Name = "Guateque",
                             Population = 1000,
-                            Province = "Kennedy"
+                            Province = "Boyaca"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Jose",
+                            Name = "Bogota",
                             Population = 10000,
-                            Province = "Guateque"
+                            Province = "Bogota.Dc"
                         });
                 });
 
@@ -270,7 +270,7 @@ namespace MotorcycleCompany.Migrations
                             Id = 1,
                             Brand = "Ferrari",
                             Color = "Blue",
-                            Date = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local),
                             IdAgency = 1,
                             IdGarage = 1,
                             Num = 123,
@@ -283,7 +283,7 @@ namespace MotorcycleCompany.Migrations
                             Id = 2,
                             Brand = "Supra",
                             Color = "Red",
-                            Date = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local),
                             IdAgency = 2,
                             IdGarage = 2,
                             Num = 345,
@@ -379,9 +379,9 @@ namespace MotorcycleCompany.Migrations
                             IdMotorcycle = 1,
                             Paidout = "Yes",
                             Price = 1000,
-                            dateF = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateI = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateR = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local)
+                            dateF = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateI = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateR = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
@@ -391,107 +391,107 @@ namespace MotorcycleCompany.Migrations
                             IdMotorcycle = 2,
                             Paidout = "No",
                             Price = 2000,
-                            dateF = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateI = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local),
-                            dateR = new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local)
+                            dateF = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateI = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            dateR = new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 
             modelBuilder.Entity("Entities.Models.Garage", b =>
                 {
-                    b.HasOne("Entities.Models.City", "Garaje")
-                        .WithMany("Garage_City")
+                    b.HasOne("Entities.Models.City", "City")
+                        .WithMany("Garage")
                         .HasForeignKey("IdCity")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Garaje");
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Entities.Models.Motorcycle", b =>
                 {
-                    b.HasOne("Entities.Models.Agency", "Agencia")
-                        .WithMany("Motorcycle_Agency")
+                    b.HasOne("Entities.Models.Agency", "Agency")
+                        .WithMany("Motorcycle")
                         .HasForeignKey("IdAgency")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.Garage", "Garaje")
-                        .WithMany("Motorcycle_Garage")
+                    b.HasOne("Entities.Models.Garage", "Garage")
+                        .WithMany("Motorcycle")
                         .HasForeignKey("IdGarage")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Agencia");
+                    b.Navigation("Agency");
 
-                    b.Navigation("Garaje");
+                    b.Navigation("Garage");
                 });
 
             modelBuilder.Entity("Entities.Models.Phones", b =>
                 {
-                    b.HasOne("Entities.Models.Agency", "Agencia")
-                        .WithMany("Phones_Agency")
+                    b.HasOne("Entities.Models.Agency", "Agency")
+                        .WithMany("Phone")
                         .HasForeignKey("IdAgency")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Agencia");
+                    b.Navigation("Agency");
                 });
 
             modelBuilder.Entity("Entities.Models.Rent", b =>
                 {
-                    b.HasOne("Entities.Models.Client", "Cliente")
-                        .WithMany("Rents_Client")
+                    b.HasOne("Entities.Models.Client", "Client")
+                        .WithMany("Rent")
                         .HasForeignKey("DNIClient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.Agency", "Agencia")
-                        .WithMany("Rents_Agency")
+                    b.HasOne("Entities.Models.Agency", "Agency")
+                        .WithMany("Rent")
                         .HasForeignKey("IdAgency")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.Motorcycle", "motocicleta")
-                        .WithMany("Rents_Motorcycle")
+                    b.HasOne("Entities.Models.Motorcycle", "Motorcycle")
+                        .WithMany("Rent")
                         .HasForeignKey("IdMotorcycle")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Agencia");
+                    b.Navigation("Agency");
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Client");
 
-                    b.Navigation("motocicleta");
+                    b.Navigation("Motorcycle");
                 });
 
             modelBuilder.Entity("Entities.Models.Agency", b =>
                 {
-                    b.Navigation("Motorcycle_Agency");
+                    b.Navigation("Motorcycle");
 
-                    b.Navigation("Phones_Agency");
+                    b.Navigation("Phone");
 
-                    b.Navigation("Rents_Agency");
+                    b.Navigation("Rent");
                 });
 
             modelBuilder.Entity("Entities.Models.City", b =>
                 {
-                    b.Navigation("Garage_City");
+                    b.Navigation("Garage");
                 });
 
             modelBuilder.Entity("Entities.Models.Client", b =>
                 {
-                    b.Navigation("Rents_Client");
+                    b.Navigation("Rent");
                 });
 
             modelBuilder.Entity("Entities.Models.Garage", b =>
                 {
-                    b.Navigation("Motorcycle_Garage");
+                    b.Navigation("Motorcycle");
                 });
 
             modelBuilder.Entity("Entities.Models.Motorcycle", b =>
                 {
-                    b.Navigation("Rents_Motorcycle");
+                    b.Navigation("Rent");
                 });
 #pragma warning restore 612, 618
         }

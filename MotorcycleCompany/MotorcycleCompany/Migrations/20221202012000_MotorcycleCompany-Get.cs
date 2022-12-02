@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MotorcycleCompany.Migrations
 {
-    public partial class Data : Migration
+    public partial class MotorcycleCompanyGet : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -216,8 +216,8 @@ namespace MotorcycleCompany.Migrations
                 columns: new[] { "Id", "Name", "Population", "Province" },
                 values: new object[,]
                 {
-                    { 1, "Kevin", 1000, "Kennedy" },
-                    { 2, "Jose", 10000, "Guateque" }
+                    { 1, "Guateque", 1000, "Boyaca" },
+                    { 2, "Bogota", 10000, "Bogota.Dc" }
                 });
 
             migrationBuilder.InsertData(
@@ -250,22 +250,22 @@ namespace MotorcycleCompany.Migrations
             migrationBuilder.InsertData(
                 table: "Motocicleta",
                 columns: new[] { "Id", "Brand", "Color", "Date", "IdAgency", "IdGarage", "Num", "NumBast", "Street", "model" },
-                values: new object[] { 1, "Ferrari", "Blue", new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, 123, "White", "Griislong", "C-666" });
+                values: new object[] { 1, "Ferrari", "Blue", new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local), 1, 1, 123, "White", "Griislong", "C-666" });
 
             migrationBuilder.InsertData(
                 table: "Motocicleta",
                 columns: new[] { "Id", "Brand", "Color", "Date", "IdAgency", "IdGarage", "Num", "NumBast", "Street", "model" },
-                values: new object[] { 2, "Supra", "Red", new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local), 2, 2, 345, "Dark", "Smile", "Z-333" });
+                values: new object[] { 2, "Supra", "Red", new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local), 2, 2, 345, "Dark", "Smile", "Z-333" });
 
             migrationBuilder.InsertData(
                 table: "Renta",
                 columns: new[] { "Id", "DNIClient", "IdAgency", "IdMotorcycle", "Paidout", "Price", "dateF", "dateI", "dateR" },
-                values: new object[] { 1, "1049794204", 1, 1, "Yes", 1000, new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local) });
+                values: new object[] { 1, "1049794204", 1, 1, "Yes", 1000, new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local) });
 
             migrationBuilder.InsertData(
                 table: "Renta",
                 columns: new[] { "Id", "DNIClient", "IdAgency", "IdMotorcycle", "Paidout", "Price", "dateF", "dateI", "dateR" },
-                values: new object[] { 2, "23622563", 2, 2, "No", 2000, new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 11, 6, 0, 0, 0, 0, DateTimeKind.Local) });
+                values: new object[] { 2, "23622563", 2, 2, "No", 2000, new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local), new DateTime(2022, 12, 1, 0, 0, 0, 0, DateTimeKind.Local) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Celular_IdAgency",

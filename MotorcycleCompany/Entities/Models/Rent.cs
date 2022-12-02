@@ -35,17 +35,17 @@ namespace Entities.Models
        
 
         [ForeignKey("DNIClient")]
-        [InverseProperty("Rents_Client")]
-        public  Client Cliente { get; set; }
+        [InverseProperty("Rent")]
+        public  Client Client { get; set; }
 
 
         [ForeignKey("IdAgency")]
-        [InverseProperty("Rents_Agency")]
-        public  Agency Agencia { get; set; }
+        [InverseProperty("Rent")]
+        public  Agency Agency { get; set; }
 
         [ForeignKey("IdMotorcycle")]
-        [InverseProperty("Rents_Motorcycle")]
-        public Motorcycle motocicleta { get; set; }
+        [InverseProperty("Rent")]
+        public Motorcycle Motorcycle { get; set; }
 
     }
 }

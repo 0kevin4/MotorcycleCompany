@@ -39,8 +39,8 @@ namespace Entities.Models
         public string Phone { get; set; }
 
 
-        [InverseProperty("Cliente")]
-        public  ICollection<Rent> Rents_Client { get; set; }
+        [InverseProperty("Client")]
+        public  ICollection<Rent> Rent { get; set; }
 
 
     }
