@@ -10,5 +10,6 @@ namespace Contracts
     public interface IAgency
     {
         IEnumerable<Agency> GetAllAgencias(bool trackChanges);
+        Agency GetAgencias(int Id, bool trackChanges);
     }
 }

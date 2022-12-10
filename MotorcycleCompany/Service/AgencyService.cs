@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Entities.Exceptions;
 using Entities.Models;
 using Service.Contract;
 using Shared.DataTransferObject;
@@ -22,6 +23,16 @@ namespace Service
             this._repository = repository;
             this._loggerManager = loggerManager;
             this._mapper = mapper;
+        }
+
+        public AgencyDto GetAgencias(int Id, bool trackChanges)
+        {
+            var agency = _repository.Agency.GetAgencias(Id, trackChanges);
+            if(agency is null)
+                throw new AgencyNotFoundException(Id);
+
+            var agencyDto= _mapper.Map<AgencyDto>(agency);
+            return agencyDto;
         }
 
         public IEnumerable<AgencyDto> GetAllAgencias(bool trackChanges)

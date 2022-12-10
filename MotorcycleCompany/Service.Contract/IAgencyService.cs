@@ -12,5 +12,6 @@ namespace Service.Contract
     {
         //IEnumerable<Agency> GetAllAgencias(bool trackChanges);
         IEnumerable<AgencyDto> GetAllAgencias(bool trackChanges);
+        AgencyDto GetAgencias(int Id, bool trackChanges);
     }
 }

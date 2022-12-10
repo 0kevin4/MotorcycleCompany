@@ -18,6 +18,10 @@ namespace Repository
 
         }
 
+        public Agency GetAgencias(int Id, bool trackChanges) =>
+            FindByCondition(K => K.Id.Equals(Id), trackChanges).SingleOrDefault();
+        
+
         public IEnumerable<Agency> GetAllAgencias(bool trackChanges) =>
             FindAll(trackChanges)
             .OrderBy(a => a.Name)

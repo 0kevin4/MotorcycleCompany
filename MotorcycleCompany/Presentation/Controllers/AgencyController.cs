@@ -26,5 +26,12 @@ namespace Presentation.Controllers
             return Ok(agencias);
             
         }
+        [HttpGet("{id:int}")]
+        public IActionResult GetAgenciasById(int id)
+        {
+            var agency = _service.AgencyService.GetAgencias(id, trackChanges: false);
+            return Ok(agency);
+        }
+        
     }
 }
